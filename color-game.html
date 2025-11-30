@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Color Mixing Game</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        padding: 40px;
+        background: #fff6d6;
+    }
+
+    h1 {
+        font-size: 42px;
+        margin-bottom: 10px;
+    }
+
+    h2 {
+        font-size: 26px;
+        margin-bottom: 20px;
+    }
+
+    .colors {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin-bottom: 30px;
+    }
+
+    .btn {
+        width: 120px;
+        height: 120px;
+        border-radius: 20px;
+        border: none;
+        cursor: pointer;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    #message {
+        margin-top: 25px;
+        font-size: 26px;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .next-btn {
+        margin-top: 25px;
+        padding: 15px 25px;
+        border-radius: 10px;
+        background: #ffb300;
+        border: none;
+        font-size: 20px;
+        cursor: pointer;
+        display: none;
+    }
+</style>
+</head>
+
+<body>
+
+<h1>Color Mixing Game 🎨</h1>
+<h2 id="level-title">Level 1: Basic Colors</h2>
+<p>Pick two colors to mix them!</p>
+
+<div id="color-area" class="colors"></div>
+
+<h2 id="message">Choose your first color</h2>
+
+<button class="next-btn" onclick="nextLevel()" id="next-level-btn">Next Level</button>
+
+<script>
+let level = 1;
+let firstPick = null;
+
+const levels = {
+    1: ["red", "blue", "yellow"],
+    2: ["red", "blue", "yellow", "white", "black"],
+    3: ["red", "blue", "yellow", "white", "black", "green", "purple", "orange"]
+};
+
+
+const names = {
+    red: "Red",
+    blue: "Blue",
+    yellow: "Yellow",
+    white: "White",
+    black: "Black",
+    green: "Green",
+    purple: "Purple",
+    orange: "Orange"
+};
+
+
+const mixes = {
+    "redblue": "Purple",
+    "bluered": "Purple",
+    "redyellow": "Orange",
+    "yellowred": "Orange",
+    "blueyellow": "Green",
+    "yellowblue": "Green",
+
+    "redwhite": "Pink",
+    "whitered": "Pink",
+    "bluewhite": "Light Blue",
+    "whiteblue": "Light Blue",
+    "blackwhite": "Gray",
+    "whiteblack": "Gray",
+    "redblack": "Dark Red",
+    "blackred": "Dark Red"
+};
+
+loadLevel();
+
+function loadLevel() {
+    document.getElementById("level-title").innerText =
+        level === 1 ? "Level 1: Basic Colors" :
+        level === 2 ? "Level 2: Expanded Colors" :
+        "Level 3: Master Palette";
+
+    const colorArea = document.getElementById("color-area");
+    colorArea.innerHTML = "";
+
+    levels[level].forEach(color => {
+        const btn = document.createElement("button");
+        btn.className = "btn";
+        btn.style.background = color;
+        btn.innerText = names[color];
+        btn.onclick = () => pick(color);
+        colorArea.appendChild(btn);
+    });
+
+    document.getElementById("message").innerText = "Choose your first color";
+    firstPick = null;
+    document.getElementById("next-level-btn").style.display = "none";
+}
+
+
+function pick(color) {
+    if (!firstPick) {
+        firstPick = color;
+        document.getElementById("message").innerText = "Now choose your second color";
+    } else {
+        let key = firstPick + color;
+        let result = mixes[key];
+
+        if (result) {
+           
+            document.getElementById("message").innerHTML =
+                `<span style='color:green;'>YOU WIN! 🎉</span><br>${names[firstPick]} + ${names[color]} = <b>${result}</b> 🎨`;
+            document.getElementById("next-level-btn").style.display = "block";
+        } else {
+            
+            document.getElementById("message").innerHTML =
+                `<span style='color:red;'>TRY AGAIN! ❌</span><br>${names[firstPick]} + ${names[color]} doesn't create a new color.`;
+            document.getElementById("next-level-btn").style.display = "none";
+        }
+
+        firstPick = null;
+    }
+}
+
+function nextLevel() {
+    if (level < 3) {
+        level++;
+        loadLevel();
+    } else {
+        document.getElementById("next-level-btn").innerText = "All Levels Completed!";
+        document.getElementById("next-level-btn").style.background = "#00c853";
+    }
+}
+</script>
+
+
+</body>
+</html>

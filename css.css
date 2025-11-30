@@ -1,0 +1,265 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ======= Fonts ======= */
+@font-face {
+  font-family: "Baby Doll";
+  src: url("fonts/BabyDoll.ttf");
+}
+
+@font-face {
+  font-family: "Coolvetica";
+  src: url("fonts/Coolvetica-SemiBold.ttf");
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  width: 100%;
+  font-family: system-ui, sans-serif;
+}
+
+/* ======= CONt. ======= */
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ======= MENÚ BODY ======= */
+
+.main-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  z-index: 5000;
+  background: transparent;
+  display: flex;
+  align-items: center;
+}
+
+.nav-inner {
+  display: flex;
+  gap: 60px;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-menu a {
+  font-family: "Baby Doll", cursive;
+  font-size: 32px;
+  color: white;
+  text-decoration: none;
+  text-shadow: 0 0 8px rgba(0,0,0,0.7);
+  transition: 0.3s ease-in-out;
+}
+
+.main-menu a:hover {
+  color: #f4a521;
+}
+
+/* body  */
+
+.body-top {
+  height: 80px;
+  background: #f4a521;
+}
+
+.body-main {
+  height: 647px;
+  width: 100%;
+  background-image: url("images/art1.jpg");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.body-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.25);
+}
+
+.body-logo {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1000px;
+  object-fit: contain;
+}
+
+/*  fonts2  */
+
+p {
+  font-family: "Coolvetica";
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+h2 {
+  font-family: "Baby Doll";
+  font-size: 40px;
+  color: #000;
+}
+
+/*  SECC  */
+
+.yellow { height: 80px; background: #f4a521; }
+.section1 { height: 540px; display: flex; align-items: center; }
+.yellow2 { height: 75px; background: #f4a521; }
+.section2 { height: 951px; padding-top: 20px; }
+.section3 { height: 650px; background: #f4a521; display: flex; align-items: center; }
+
+/* WHAT IS?  */
+
+.about-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  height: 100%;
+}
+
+.about-img-box {
+  width: 300px;
+  height: 440px;
+}
+
+.about-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.about-text {
+  flex: 1;
+  max-width: 600px;
+  font-size: 24px;  
+  line-height: 1.5;
+}
+
+.about-text h2 {
+  margin-bottom: 30px;
+  font-size: 55px;
+}
+
+
+/*  what is  is..?   */
+
+.learn-wrapper {
+  text-align: center;
+  height: 100%;
+}
+
+.learn-gallery {
+  display: flex;
+  justify-content: center;
+  gap: 85px;
+  margin-bottom: 80px;
+}
+
+.learn-gallery img {
+  width: 297px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.learn-title {
+  margin-bottom: 30px;
+  font-size: 45px;
+}
+
+.learn-text {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 24px;  
+  line-height: 1.5;
+}
+
+
+/* BIO  */
+
+.bio-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  height: 100%;
+}
+
+.bio-text {
+  flex: 1;
+  max-width: 600px;
+  font-size: 55px;
+
+.bio-text h2 {
+  margin-bottom: 80px;
+}  
+  
+}
+
+.bio-img-box {
+  width: 331px;
+  height: 559px;
+}
+
+.bio-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* FOOTER */
+
+.footer {
+  height: 256px;
+  background: white;
+  display: flex;
+  align-items: center;
+}
+
+.play-button {
+  padding: 15px 30px;
+  background: #f4a521;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.footer2 {
+  height: 33px;
+  background: #f4a521;
+}
+/* FOOTER CONTENT */
+
+.footer-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.footer-inner {
+  text-align: center;
+}
+
+.footer-email {
+  font-family: "Coolvetica";
+  font-size: 20px;
+  margin-bottom: 20px;
+}
